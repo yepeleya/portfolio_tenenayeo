@@ -1,27 +1,52 @@
 {
-  "name": "portfolio_tenenayeo",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.126",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
+  "name": "portfolio-tenenayeo",
+  "version": "1.0.0",
+  "description": "Portfolio interactif avec dashboard administrateur",
+  "homepage": "https://yepeleya.github.io/portfolio_tenenayeo",
   "scripts": {
     "start": "react-scripts start",
+    "admin": "cross-env REACT_APP_MODE=admin react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node backend/server.js",
+    "dev": "concurrently \"npm run server\" \"npm start\"",
+    "dev:admin": "concurrently \"npm run server\" \"npm run admin\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
+    "@fortawesome/free-brands-svg-icons": "^7.0.0",
+    "@fortawesome/free-solid-svg-icons": "^7.0.0",
+    "@fortawesome/react-fontawesome": "^0.2.3",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.4.0",
+    "clsx": "^2.1.1",
+    "concurrently": "^8.2.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "framer-motion": "^10.16.4",
+    "lucide-react": "^0.263.1",
+    "mysql2": "^3.6.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.5.2",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.15.4",
+    "tailwind-merge": "^3.3.1",
+    "web-vitals": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "gh-pages": "^6.3.0"
   },
   "eslintConfig": {
     "extends": [
@@ -40,5 +65,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:3002"
 }

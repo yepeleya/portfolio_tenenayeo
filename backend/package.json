@@ -1,0 +1,51 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Tenenayeo Portfolio",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "dev": "nodemon src/app.ts",
+    "type-check": "tsc --noEmit",
+    "create-admin": "ts-node src/scripts/createAdmin.ts",
+    "reset-password": "ts-node src/scripts/resetPassword.ts",
+    "check-db": "ts-node src/scripts/checkDB.ts",
+    "update-db": "ts-node src/scripts/updateDB.ts",
+    "test-login": "ts-node src/scripts/testLogin.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "portfolio",
+    "api",
+    "express",
+    "typescript"
+  ],
+  "author": "Tenenayeo",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node-fetch": "^2.6.12",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^4.21.2",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "mysql2": "^3.14.2",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^7.0.5"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/nodemailer": "^6.4.17",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+/backend/node_modules
+/admin-app/node_modules
 
 # testing
 /coverage
@@ -18,6 +20,14 @@
 .env.test.local
 .env.production.local
 
+# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Test files
+test-*.js
+test-*.ps1
+*test*.js
+backend/test-*.js
+backend/*test*.js
