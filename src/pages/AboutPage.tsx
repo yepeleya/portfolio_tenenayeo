@@ -266,7 +266,7 @@ const AboutPage: React.FC = () => {
                   GitHub
                 </a>
                 <a 
-                  href="/contact"
+                  href={`mailto:${personalInfo.email}`}
                   className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
                   <Heart className="w-5 h-5 mr-2" />
@@ -662,7 +662,7 @@ const AboutPage: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/contact"
+              href={`mailto:${personalInfo.email}`}
               className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               <Heart className="w-5 h-5 mr-2" />

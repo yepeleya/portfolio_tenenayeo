@@ -2,7 +2,6 @@
   "name": "portfolio-tenenayeo",
   "version": "1.0.0",
   "description": "Portfolio interactif avec dashboard administrateur",
-  "homepage": "https://yepeleya.github.io/portfolio_tenenayeo",
   "scripts": {
     "start": "react-scripts start",
     "admin": "cross-env REACT_APP_MODE=admin react-scripts start",
@@ -11,9 +10,7 @@
     "eject": "react-scripts eject",
     "server": "node backend/server.js",
     "dev": "concurrently \"npm run server\" \"npm start\"",
-    "dev:admin": "concurrently \"npm run server\" \"npm run admin\"",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev:admin": "concurrently \"npm run server\" \"npm run admin\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
@@ -45,8 +42,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "gh-pages": "^6.3.0"
+    "@types/react-dom": "^18.2.7"
   },
   "eslintConfig": {
     "extends": [
