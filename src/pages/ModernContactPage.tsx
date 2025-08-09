@@ -119,7 +119,7 @@ const ModernContactPage = () => {
       icon: Phone,
       label: "Téléphone",
       value: "+225 07 08 23 98 07",
-      href: "tel:+22507082398 07",
+      href: "tel:+2250708239807",
       description: "Appelez-moi directement",
       color: "green"
     },
