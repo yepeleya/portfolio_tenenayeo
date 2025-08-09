@@ -18,9 +18,9 @@ const ModernHomePage = () => {
   ];
 
   const stats = [
-    { number: '15+', label: 'Projets Réalisés' },
-    { number: '3+', label: 'Années d\'Expérience' },
-    { number: '50+', label: 'Technologies Maîtrisées' },
+    { number: '5+', label: 'Projets Réalisés' },
+    { number: '3+', label: 'Années d\'Apprentissage' },
+    { number: '10+', label: 'Technologies' },
     { number: '100%', label: 'Satisfaction Client' }
   ];
 
