@@ -148,7 +148,7 @@ const AboutPage: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-20"
         >
           {stats.map((stat, index) => (
             <motion.div
@@ -173,7 +173,7 @@ const AboutPage: React.FC = () => {
         </motion.div>
 
         {/* Personal Info Section */}
-        <div className="grid lg:grid-cols-2 gap-16 mb-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 mb-20">
           {/* Left side - Personal info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}

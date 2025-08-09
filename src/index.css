@@ -5,6 +5,31 @@
 /* Import des animations personnalisées */
 @import './styles/animations.css';
 
+/* Force le thème sur mobile et desktop */
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
+}
+
+/* Amélioration responsive */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Amélioration du scroll sur mobile */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* Variables CSS pour les thèmes */
 :root {
   /* Thème Clair - Palette Moderne */
