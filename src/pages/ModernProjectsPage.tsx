@@ -1,10 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Filter, Search, Code, Eye, Star, Calendar } from 'lucide-react';
+import { useProjectNavigation } from '../utils/projectNavigation';
 
 const ModernProjectsPage = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
+  const { navigateToProject } = useProjectNavigation();
 
   const projects = useMemo(() => [
     {
@@ -258,17 +260,15 @@ const ModernProjectsPage = () => {
 
                     {/* Action Buttons */}
                     <div className="flex space-x-4">
-                      <motion.a
-                        href={project.external}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <motion.button
+                        onClick={() => navigateToProject(project.external, project.title)}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="flex items-center space-x-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
                       >
                         <Eye className="w-4 h-4" />
                         <span>Voir le projet</span>
-                      </motion.a>
+                      </motion.button>
                       
                       <motion.a
                         href={project.github}
@@ -329,16 +329,14 @@ const ModernProjectsPage = () => {
                         >
                           <Github className="w-5 h-5" />
                         </motion.a>
-                        <motion.a
-                          href={project.external}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <motion.button
+                          onClick={() => navigateToProject(project.external, project.title)}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                         >
                           <ExternalLink className="w-5 h-5" />
-                        </motion.a>
+                        </motion.button>
                       </div>
                     </div>
 
