@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Portfolio Tenena Yeo</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        h1 { color: #fff; margin-bottom: 20px; }
+        .status { margin: 10px 0; padding: 10px; border-radius: 8px; }
+        .success { background: rgba(46, 204, 113, 0.3); }
+        .info { background: rgba(52, 152, 219, 0.3); }
+        .loading { 
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Portfolio Tenena Yeo - Test de déploiement</h1>
+        
+        <div class="status success">
+            ✅ HTML statique fonctionne
+        </div>
+        
+        <div class="status info">
+            <div class="loading"></div> Chargement de l'application React en cours...
+        </div>
+        
+        <p>Si tu vois cette page, GitHub Pages fonctionne !</p>
+        <p>L'application React se chargera dans quelques instants...</p>
+        
+        <div style="margin-top: 30px;">
+            <p><strong>Dernière mise à jour :</strong> 3 septembre 2025</p>
+            <p><strong>Status :</strong> Déploiement en cours</p>
+        </div>
+    </div>
+    
+    <script>
+        // Redirection vers l'app React après 3 secondes
+        setTimeout(() => {
+            if (window.location.pathname === '/test.html') {
+                window.location.href = '/portfolio_tenenayeo/';
+            }
+        }, 3000);
+        
+        console.log('🚀 Test page chargée avec succès !');
+        console.log('URL actuelle :', window.location.href);
+        console.log('GitHub Pages semble fonctionner correctement.');
+    </script>
+</body>
+</html>

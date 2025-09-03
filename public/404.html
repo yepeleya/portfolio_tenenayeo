@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Tenena Yeo - Redirection</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 { 
+            color: #fff; 
+            margin-bottom: 20px; 
+            font-size: 2.5em;
+            margin-top: 0;
+        }
+        .emoji { font-size: 4em; margin-bottom: 20px; }
+        .message { 
+            font-size: 1.2em; 
+            margin-bottom: 30px; 
+            line-height: 1.6;
+        }
+        .loading { 
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .redirect-info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji">🎓</div>
+        <h1>Portfolio Tenena Yeo</h1>
+        
+        <div class="message">
+            Redirection en cours vers l'application...
+        </div>
+        
+        <div class="loading"></div>
+        
+        <div class="redirect-info">
+            <p><strong>Si la redirection ne fonctionne pas :</strong></p>
+            <a href="/portfolio_tenenayeo/" class="btn">🏠 Accueil</a>
+            <a href="/portfolio_tenenayeo/test.html" class="btn">🔧 Test</a>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+            <p>Développeur Full-Stack | ISTC Polytechnique</p>
+            <p>GitHub Pages - Version 2025</p>
+        </div>
+    </div>
+    
+    <script>
+        // Gestion de la redirection pour GitHub Pages
+        const redirect = () => {
+            const path = window.location.pathname;
+            console.log('🔄 Redirection depuis:', path);
+            
+            // Si on est sur la page 404, rediriger vers l'accueil
+            if (path.includes('404.html') || path === '/portfolio_tenenayeo/404.html') {
+                console.log('📍 Redirection vers l\'accueil...');
+                window.location.href = '/portfolio_tenenayeo/';
+                return;
+            }
+            
+            // Sinon, essayer de rediriger vers le bon chemin
+            const targetPath = path.replace('/portfolio_tenenayeo', '') || '/';
+            console.log('🎯 Redirection vers:', `/portfolio_tenenayeo${targetPath}`);
+            
+            setTimeout(() => {
+                window.location.href = `/portfolio_tenenayeo${targetPath}`;
+            }, 2000);
+        };
+        
+        // Redirection automatique après 1 seconde
+        setTimeout(redirect, 1000);
+        
+        // Log de debug
+        console.log('🚀 Page 404 personnalisée chargée');
+        console.log('📍 URL actuelle:', window.location.href);
+        console.log('📂 Path:', window.location.pathname);
+    </script>
+</body>
+</html>
