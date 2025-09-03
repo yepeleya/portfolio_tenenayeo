@@ -16,10 +16,16 @@ import {
   Globe,
   Star
 } from 'lucide-react';
-import { downloadCV } from '../utils/cvDownload';
+import { downloadCVWithLoading } from '../utils/cvDownload';
+import { useLoading } from '../context/LoadingContext';
 
 const ModernAboutPage = () => {
   const [activeTab, setActiveTab] = useState('skills');
+  const { setLoading } = useLoading();
+
+  const handleDownloadCV = async () => {
+    await downloadCVWithLoading(setLoading);
+  };
 
   const skills = [
     { 
@@ -206,7 +212,7 @@ const ModernAboutPage = () => {
             </div>
 
             <motion.button
-              onClick={downloadCV}
+              onClick={handleDownloadCV}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center space-x-3 w-full justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl"

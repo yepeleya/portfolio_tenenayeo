@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ThemeContextType } from '../types';
+import { trackThemeToggle } from '../utils/analytics';
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
@@ -56,7 +57,10 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   }, []);
 
   const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    // Suivre l'utilisation du toggle thème
+    trackThemeToggle(newTheme ? 'dark' : 'light');
   };
 
   return (

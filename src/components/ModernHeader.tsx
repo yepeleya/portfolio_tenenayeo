@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Menu, X, Home, User, Briefcase, MessageCircle, Download, Code } from 'lucide-react';
+import { Sun, Moon, Menu, X, Home, User, Briefcase, MessageCircle, Download } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { useLoading } from '../context/LoadingContext';
 
 const ModernHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
+  const { showLoadingFor } = useLoading();
   const location = useLocation();
+
+  const handleNavClick = (path: string) => {
+    if (location.pathname !== path) {
+      showLoadingFor(1200, 'Navigation...');
+      setIsMenuOpen(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +60,7 @@ const ModernHeader = () => {
               className="relative"
             >
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                <Code className="w-5 h-5 text-white" />
+                <span className="text-2xl">🎓</span>
               </div>
               <div className="absolute -inset-1 bg-gradient-to-br from-blue-500 via-purple-600 to-blue-700 rounded-xl blur opacity-30 group-hover:opacity-60 transition-opacity duration-300"></div>
             </motion.div>
@@ -71,6 +80,7 @@ const ModernHeader = () => {
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={() => handleNavClick(item.path)}
                 className={`group relative px-4 py-2 rounded-xl transition-all duration-300 ${
                   isActiveLink(item.path)
                     ? 'text-blue-600 dark:text-blue-400'
@@ -181,7 +191,7 @@ const ModernHeader = () => {
                     >
                       <Link
                         to={item.path}
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={() => handleNavClick(item.path)}
                         className={`flex items-center space-x-3 p-3 rounded-xl transition-all duration-300 ${
                           isActiveLink(item.path)
                             ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'

@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Download, ExternalLink, ArrowRight, MapPin, Code, Palette, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { downloadCV } from '../utils/cvDownload';
+import { downloadCVWithLoading } from '../utils/cvDownload';
+import { useLoading } from '../context/LoadingContext';
 
 const ModernHomePage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const { setLoading } = useLoading();
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  const handleDownloadCV = async () => {
+    await downloadCVWithLoading(setLoading);
+  };
 
   const skills = [
     { icon: Code, name: 'Frontend', desc: 'React, TypeScript, Tailwind' },
@@ -95,7 +101,7 @@ const ModernHomePage = () => {
                   </Link>
                   
                   <button
-                    onClick={downloadCV}
+                    onClick={handleDownloadCV}
                     className="group inline-flex items-center px-8 py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
                   >
                     <Download className="mr-2 w-5 h-5 group-hover:animate-bounce" />
