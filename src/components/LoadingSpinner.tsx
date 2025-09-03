@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import BeretIcon from './BeretIcon';
 
 interface LoadingSpinnerProps {
   size?: number;
@@ -29,9 +30,9 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
           <div className="absolute top-0 left-1/2 w-1 h-4 bg-blue-600 dark:bg-blue-400 rounded-full transform -translate-x-1/2 -translate-y-2"></div>
         </motion.div>
         
-        {/* Icône 🎓 au centre qui pulse */}
+        {/* Béret au centre qui pulse */}
         <motion.div
-          className="relative z-10 flex items-center justify-center"
+          className="relative z-10 text-blue-600 dark:text-blue-400"
           style={{ 
             width: size, 
             height: size,
@@ -48,7 +49,7 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
             ease: "easeInOut"
           }}
         >
-          <span className="text-4xl">🎓</span>
+          <BeretIcon size={size} className="w-full h-full" />
         </motion.div>
       </div>
       

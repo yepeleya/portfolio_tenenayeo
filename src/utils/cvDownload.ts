@@ -1,11 +1,28 @@
 // Fonction utilitaire pour télécharger le CV
 export const downloadCV = async () => {
   try {
-    // Créer un lien vers le fichier CV dans le dossier public
+    // Pour GitHub Pages, utiliser le chemin complet avec le nom du repo
+    const baseUrl = window.location.hostname === 'localhost' 
+      ? '' 
+      : '/portfolio_tenenayeo';
+    
+    // Vérifier d'abord si le fichier existe
+    const cvUrl = `${baseUrl}/CV_Tenena.pdf`;
+    
+    try {
+      const response = await fetch(cvUrl, { method: 'HEAD' });
+      if (!response.ok) {
+        throw new Error('Fichier CV non trouvé');
+      }
+    } catch (fetchError) {
+      console.warn('Impossible de vérifier le fichier CV, tentative de téléchargement direct...');
+    }
+    
     const link = document.createElement('a');
-    link.href = '/CV_Tenena.pdf';
+    link.href = cvUrl;
     link.download = 'CV_Tenena.pdf';
     link.target = '_blank';
+    link.rel = 'noopener noreferrer';
     
     // Déclencher le téléchargement
     document.body.appendChild(link);
@@ -16,7 +33,19 @@ export const downloadCV = async () => {
     return true;
   } catch (error) {
     console.error('Erreur lors du téléchargement du CV:', error);
-    return false;
+    
+    // Fallback vers l'ouverture dans un nouvel onglet
+    try {
+      const baseUrl = window.location.hostname === 'localhost' 
+        ? '' 
+        : '/portfolio_tenenayeo';
+      window.open(`${baseUrl}/CV_Tenena.pdf`, '_blank');
+      return true;
+    } catch (fallbackError) {
+      console.error('Erreur lors du fallback:', fallbackError);
+      alert('Désolé, le CV n\'est pas disponible en téléchargement pour le moment.');
+      return false;
+    }
   }
 };
 
