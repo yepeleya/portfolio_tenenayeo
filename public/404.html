@@ -2,7 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Portfolio Tenena Yeo - Redirection</title>
     <style>
         body { 
@@ -97,12 +100,30 @@
     </div>
     
     <script>
-        // Gestion de la redirection pour GitHub Pages
+        // Gestion de la redirection pour GitHub Pages - Version Mobile
         const redirect = () => {
             const path = window.location.pathname;
-            console.log('🔄 Redirection depuis:', path);
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
             
-            // Si on est sur la page 404, rediriger vers l'accueil
+            console.log('🔄 Redirection depuis:', path);
+            console.log('📱 Mobile détecté:', isMobile);
+            
+            // Nettoyage du cache pour mobile
+            if (isMobile && 'serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(registrations => {
+                    registrations.forEach(registration => registration.unregister());
+                });
+            }
+            
+            // Force refresh pour mobile
+            if (isMobile) {
+                const url = new URL(window.location);
+                url.searchParams.set('_t', Date.now());
+                window.location.href = '/portfolio_tenenayeo/?' + url.searchParams.toString();
+                return;
+            }
+            
+            // Redirection standard pour desktop
             if (path.includes('404.html') || path === '/portfolio_tenenayeo/404.html') {
                 console.log('📍 Redirection vers l\'accueil...');
                 window.location.href = '/portfolio_tenenayeo/';
@@ -118,8 +139,9 @@
             }, 2000);
         };
         
-        // Redirection automatique après 1 seconde
-        setTimeout(redirect, 1000);
+        // Redirection plus rapide pour mobile
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        setTimeout(redirect, isMobile ? 500 : 1000);
         
         // Log de debug
         console.log('🚀 Page 404 personnalisée chargée');
