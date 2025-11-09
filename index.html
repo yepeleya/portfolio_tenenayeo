@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Tenena Yeo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+        h1 { margin-top: 0; font-size: 2.5em; }
+        .loading {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin: 20px 0;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 Portfolio Tenena Yeo</h1>
+        <p>Chargement de l'application React en cours...</p>
+        <div class="loading"></div>
+        
+        <div id="status">
+            <p>✨ Redirection automatique vers l'application...</p>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <a href="./test.html" class="btn">🔧 Page de test</a>
+            <a href="./simple.html" class="btn">📄 Version simple</a>
+        </div>
+        
+        <div style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+            <p>Développeur Full-Stack | ISTC Polytechnique</p>
+            <p>GitHub Pages - Novembre 2025</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('🚀 Index GitHub Pages chargé');
+        console.log('📍 URL:', window.location.href);
+        
+        // Redirection vers l'application React
+        setTimeout(() => {
+            document.getElementById('status').innerHTML = '<p>🔄 Chargement de l\'application React...</p>';
+            
+            // Essayer de charger l'application React
+            // Si elle existe, elle remplacera cette page
+            // Sinon, on reste sur cette page de fallback
+            
+            setTimeout(() => {
+                if (document.getElementById('status')) {
+                    document.getElementById('status').innerHTML = 
+                        '<p>⚠️ Application React en cours de déploiement...</p>' +
+                        '<p>Cette page temporaire sera remplacée automatiquement.</p>';
+                }
+            }, 3000);
+            
+        }, 1000);
+    </script>
+</body>
+</html>
