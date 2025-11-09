@@ -12,7 +12,7 @@ const ProjectsPage: React.FC = () => {
               Application de gestion de parrainage développée en HTML/CSS/JavaScript avec génération PDF.
             </p>
             <a 
-              href="https://github.com/yepeleya/projet-parrainage" 
+              href="https://github.com/yepeleya/projet-parrainage-aeistc" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-800"
